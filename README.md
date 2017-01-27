@@ -19,8 +19,9 @@ Optional: install yarn: https://yarnpkg.com/
 Run this in your favourite terminal:
 
 ```sh
-$ git clone repo
-$ cd app folder
+$ git clone https://github.com/DonSandini/ReactRedux-simple-app.git
+$ cd ReactRedux-simple-app
+$ yarn/npm install
 $ npm run serve
 $ open http://localhost:3210
 ```
