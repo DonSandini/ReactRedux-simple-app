@@ -1,0 +1,2 @@
+export const SET_SEARCH_TEXT = 'SET_SEARCH_TEXT';
+export const RESET_SEARCH_INPUT = 'RESET_SEARCH_INPUT';
