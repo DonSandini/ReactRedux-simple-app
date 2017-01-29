@@ -1,31 +1,50 @@
 import { call, put, takeLatest } from 'redux-saga/effects';
 import { GET_USER_INFO, GITHUB_USER_API } from '../constants/users';
 import { startLoading, stopLoading } from '../actions/loaders';
+import { consumeUserInfo, resetUserInfo, userNotFound } from '../actions/users';
 
-const fetchFromAPI = ({ method, url, query }) =>
-    fetch(url, {
-        method
+const fetchFromApi = (url) => fetch(url)
+    .then((response) => response.json()) // Transform the data into json
+    .then(data => {
+        return {
+            success: true,
+            ...data
+        }
     })
-        .then((response) => response)
-        .catch((error) => error);
+    .catch(error => {
+        return {
+            success: false,
+            ...error
+        }
+    });
 
 function* getUserInfoSuccess(response) {
-    console.log(response)
+    if (response.message) {
+        yield put(userNotFound())
+    } else {
+        yield put(consumeUserInfo({ userInfo: response }))
+    }
 }
 
 function* getUserInfoError(error) {
-    console.log(error)
+    console.log(error); //handle fetch fail here
 }
 
 function* getUserInfo({ payload }) {
     try {
+        yield put(resetUserInfo());
         const { username } = payload;
         const requestUrl = `${GITHUB_USER_API}${username}`;
+
         yield put(startLoading({ name: 'users' }));
 
-        const response = yield call(fetch, requestUrl);
-        // TODO: handle api calls with saga
-        yield put({ type: "THING_RECEIVED", response })
+        const response = yield fetchFromApi(requestUrl);
+
+        if (response.success) {
+            yield call(getUserInfoSuccess, response);
+        } else {
+            yield call(getUserInfoError, response);
+        }
     } catch(e) {
         console.log(e)
     } finally {

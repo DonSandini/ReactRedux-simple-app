@@ -1,23 +1,21 @@
 import React, { Component, PropTypes } from 'react';
 
 export default class Button extends Component {
-    componentWillMount() {
-        console.log('button mounted')
-    }
-
-    componentWillUnmount() {
-        console.log('button unmounted')
-    }
     render() {
-        const { onClick } = this.props;
+        const { text, onClick } = this.props;
 
         return (
             <button onClick={onClick}>
-                CLICK ME
+                { text }
             </button>
         );
     }
 }
+
+Button.defaultProps = {
+    text: '',
+    onClick: () => {}
+};
 
 Button.propTypes = {
     onClick: PropTypes.func.isRequired
