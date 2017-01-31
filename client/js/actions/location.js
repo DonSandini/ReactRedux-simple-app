@@ -5,3 +5,9 @@ export function goToUserId(username) {
         pathname: `/user-info/${username}`
     })
 }
+
+export function goHome() {
+    return push({
+        pathname: `/`
+    })
+}

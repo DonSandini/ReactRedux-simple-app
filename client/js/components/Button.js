@@ -2,10 +2,10 @@ import React, { Component, PropTypes } from 'react';
 
 export default class Button extends Component {
     render() {
-        const { text, onClick } = this.props;
+        const { className, text, onClick } = this.props;
 
         return (
-            <button onClick={onClick}>
+            <button className={className} onClick={onClick}>
                 { text }
             </button>
         );
@@ -13,10 +13,13 @@ export default class Button extends Component {
 }
 
 Button.defaultProps = {
+    className: '',
     text: '',
     onClick: () => {}
 };
 
 Button.propTypes = {
+    className: PropTypes.string.isRequired,
+    text: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired
 };

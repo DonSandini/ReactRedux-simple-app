@@ -2,10 +2,16 @@ var webpack = require('webpack');
 
 module.exports = {
     devtool: 'inline-source-map',
+    devServer: {
+        historyApiFallback: true,
+        contentBase: './',
+        hot: true
+    },
     entry: [
         'babel-polyfill',
         'webpack-hot-middleware/client',
-        './client/client.js'
+        './client/client.js',
+        './client/index.css'
     ],
     output: {
         path: '/dist',
@@ -30,8 +36,10 @@ module.exports = {
             },
             {
                 test: /\.css$/,
-                loader: 'style-loader!css-loader'
+                loader: 'style-loader!css-loader!cssnext-loader?sourceMap',
+                exclude: /node_modules/
             }
         ]
-    }
+    },
+    cssnext: {}
 };

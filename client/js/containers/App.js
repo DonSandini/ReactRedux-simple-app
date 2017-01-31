@@ -9,6 +9,7 @@ class App extends Component {
         return (
             <div>
                 <SearchContainer />
+                { this.props.children }
             </div>
         );
     }

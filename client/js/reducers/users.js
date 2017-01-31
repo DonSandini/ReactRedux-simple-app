@@ -13,7 +13,7 @@ const initialState = Immutable.Map({
 export default function (state = initialState, action = {}) {
     switch (action.type) {
         case CONSUME_USER_INFO:
-            state = state.set('userInfo', action.payload.userInfo);
+            state = state.set('userInfo', Immutable.Map(action.payload.userInfo));
             break;
         case USER_NOT_FOUND:
             state = state.set('userNotFound', true);

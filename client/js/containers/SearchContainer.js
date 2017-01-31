@@ -11,6 +11,7 @@ class SearchContainer extends Component {
         super();
 
         this.onButtonClick = this.onButtonClick.bind(this);
+        this.onKeyDown = this.onKeyDown.bind(this);
     }
 
     onButtonClick() {
@@ -22,13 +23,27 @@ class SearchContainer extends Component {
         }
     }
 
+    onKeyDown(e) {
+        if (e.keyCode === 13) { //on "Enter" press
+            this.onButtonClick();
+        }
+    }
+
     render() {
         const { searchText, setSearchText } = this.props;
 
         return (
-            <div>
-                <SearchInput text={searchText} setSearchText={setSearchText} />
-                <Button text="Search for a GitHub user" onClick={this.onButtonClick} />
+            <div className="search-github-user-wrapper">
+                <SearchInput
+                    text={searchText}
+                    setSearchText={setSearchText}
+                    onKeyDown={this.onKeyDown}
+                />
+                <Button
+                    className="search-github-user-button"
+                    text="Search for a GitHub user"
+                    onClick={this.onButtonClick}
+                />
             </div>
         );
     }

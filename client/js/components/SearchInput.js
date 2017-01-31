@@ -14,12 +14,28 @@ export default class SearchInput extends Component {
     }
 
     render() {
+        const { onKeyDown } = this.props;
+
         return (
-            <input type="text" onChange={this.setSearchValue} />
+            <div className="search-input-wrapper">
+                <input
+                    type="text"
+                    className="search-input"
+                    onChange={this.setSearchValue}
+                    onKeyDown={onKeyDown}
+                />
+            </div>
         );
     }
 }
 
+
+SearchInput.defaultProps = {
+    onKeyDown: () => {},
+    setSearchText: () => {}
+};
+
 SearchInput.propTypes = {
+    onKeyDown: PropTypes.func.isRequired,
     setSearchText: PropTypes.func.isRequired
 };

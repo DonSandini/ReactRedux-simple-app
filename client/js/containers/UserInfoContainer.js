@@ -1,14 +1,10 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { goHome } from '../actions/location';
 import { UserInfo } from '../components/user-info';
 
 class UserInfoContainer extends Component {
-
-    componentWillMount() {
-        debugger;
-    }
-
     renderUserNotFound() {
         return (
             <div className="user-not-found">
@@ -18,13 +14,13 @@ class UserInfoContainer extends Component {
     }
 
     render() {
-        const { isUserInfoFound, userInfo } = this.props;
-        debugger;
+        const { isLoading, isUserInfoFound, userInfo } = this.props;
+
         return (
             <div>
                 { isUserInfoFound ?
                     this.renderUserNotFound()
-                    : <UserInfo userInfo={userInfo} />
+                    : <UserInfo isLoading={isLoading} userInfo={userInfo} />
                 }
             </div>
         );
@@ -34,8 +30,10 @@ class UserInfoContainer extends Component {
 UserInfoContainer.displayName = 'UserInfoContainer';
 
 UserInfoContainer.propTypes = {
-    isUserInfoFound: PropTypes.bool.isRequired,
-    userInfo: PropTypes.object.isRequired
+    userInfo: PropTypes.object.isRequired,
+    goHome: PropTypes.func.isRequired,
+    isUserInfoFound: PropTypes.bool,
+    isLoading: PropTypes.bool
 };
 
 export default connect(
@@ -43,9 +41,10 @@ export default connect(
     state => ({
         isUserInfoFound: state.users.get('isUserInfoFound'),
         userInfo: state.users.get('userInfo'),
+        isLoading: state.loaders.get('users')
     }),
     //	Bind actions to props
     dispatch => bindActionCreators({
-
+        goHome
     }, dispatch)
 )(UserInfoContainer);

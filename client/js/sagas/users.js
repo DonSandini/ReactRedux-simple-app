@@ -32,11 +32,11 @@ function* getUserInfoError(error) {
 
 function* getUserInfo({ payload }) {
     try {
+        yield put(startLoading({ name: 'users' }));
         yield put(resetUserInfo());
         const { username } = payload;
         const requestUrl = `${GITHUB_USER_API}${username}`;
 
-        yield put(startLoading({ name: 'users' }));
 
         const response = yield fetchFromApi(requestUrl);
 

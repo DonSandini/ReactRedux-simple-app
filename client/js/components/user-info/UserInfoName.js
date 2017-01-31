@@ -2,14 +2,20 @@ import React, { Component, PropTypes } from 'react';
 
 export default class UserInfoName extends Component {
     render() {
+        const { name } = this.props;
+
         return (
-            <div>
-                UserInfoName
+            <div className="user-info-name">
+                { name }
             </div>
         );
     }
 }
 
+UserInfoName.defaultProps = {
+    name: ''
+};
+
 UserInfoName.propTypes = {
-    userInfo: PropTypes.object.isRequired
+    name: PropTypes.string
 };

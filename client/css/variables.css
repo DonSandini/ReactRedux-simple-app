@@ -1,0 +1,6 @@
+:root {
+    --fontSize: 1rem;
+    --mainBackgroundColor: #12345678;
+    --mainColor: #8D8986;
+    --highlightColor: hwb(190, 35%, 20%);
+}
