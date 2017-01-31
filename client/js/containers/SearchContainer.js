@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { getUserInfo } from '../actions/users';
+import { getUserInfo, resetUserInfo } from '../actions/users';
 import { setSearchText } from '../actions/search';
 import { goToUserId } from '../actions/location';
 import { Button, SearchInput } from '../components';
@@ -30,7 +30,7 @@ class SearchContainer extends Component {
     }
 
     render() {
-        const { searchText, setSearchText } = this.props;
+        const { resetUserInfo, searchText, setSearchText } = this.props;
 
         return (
             <div className="search-github-user-wrapper">
@@ -40,9 +40,14 @@ class SearchContainer extends Component {
                     onKeyDown={this.onKeyDown}
                 />
                 <Button
-                    className="search-github-user-button"
+                    className="button search-github-user-button"
                     text="Search for a GitHub user"
                     onClick={this.onButtonClick}
+                />
+                <Button
+                    className="button reset-search-github-user-button"
+                    text="Reset search"
+                    onClick={resetUserInfo}
                 />
             </div>
         );
@@ -54,6 +59,7 @@ SearchContainer.displayName = 'SearchContainer';
 SearchContainer.defaultProps = {
     searchText: '',
     getUserInfo: () => {},
+    resetUserInfo: () => {},
     setSearchText: () => {}
 };
 
@@ -61,6 +67,7 @@ SearchContainer.propTypes = {
     searchText: PropTypes.string.isRequired,
     getUserInfo: PropTypes.func.isRequired,
     goToUserId: PropTypes.func.isRequired,
+    resetUserInfo: PropTypes.func.isRequired,
     setSearchText: PropTypes.func.isRequired
 };
 
@@ -73,6 +80,7 @@ export default connect(
     dispatch => bindActionCreators({
         getUserInfo,
         goToUserId,
+        resetUserInfo,
         setSearchText
     }, dispatch)
 )(SearchContainer);
