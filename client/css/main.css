@@ -1,11 +1,15 @@
 *,
 *:before,
 *:after {
-    box-sizing: border-box; 
+    box-sizing: border-box;
+}
+
+html, html * {
+    font-family: 'Roboto', san-serif;
 }
 
 body {
-    background: var(--mainColor);
-    color: var(--highlightColor);
+    background: var(--mainBackgroundColor);
+    color: var(--mainGray);
 }
 

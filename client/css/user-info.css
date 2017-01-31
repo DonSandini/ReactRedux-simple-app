@@ -1,0 +1,50 @@
+.search-github-user-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.search-input-wrapper {
+    width: 100%;
+}
+
+.search-input {
+    width: 100%;
+    border-radius: var(--borderRadiusCommon);
+    transition: var(--transitionCommon);
+    padding: 10px;
+    border: 2px solid var(--mainGray);
+    color: var(--mainGray);
+    outline: none;
+}
+
+.search-input:focus {
+    border-color: var(--mainBlue);
+}
+
+.search-github-user-wrapper .button {
+    border: none;
+    text-transform: uppercase;
+    color: var(--mainWhite);
+    border-radius: var(--borderRadiusCommon);
+    background: var(--mainBlue);
+    transition: var(--transitionCommon);
+    padding: 15px;
+    margin-top: 10px;
+    outline: none;
+    appearance: none;
+}
+
+.search-github-user-wrapper .button:hover {
+    background: var(--mainBlueSoft);
+}
+
+.search-github-user-wrapper .button:active {
+    background: var(--mainBlueDark);
+}
+
+.search-github-user-wrapper .button {
+    
+}

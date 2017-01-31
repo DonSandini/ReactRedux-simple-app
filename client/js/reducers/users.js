@@ -7,7 +7,7 @@ import Immutable from 'immutable';
 
 const initialState = Immutable.Map({
     userInfo: Immutable.Map(),
-    userNotFound: false
+    isUserInfoFound: false
 });
 
 export default function (state = initialState, action = {}) {
@@ -16,7 +16,7 @@ export default function (state = initialState, action = {}) {
             state = state.set('userInfo', Immutable.Map(action.payload.userInfo));
             break;
         case USER_NOT_FOUND:
-            state = state.set('userNotFound', true);
+            state = state.set('isUserInfoFound', true);
             break;
         case RESET_USER_INFO:
             state = initialState;

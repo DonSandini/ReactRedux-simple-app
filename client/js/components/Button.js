@@ -2,10 +2,13 @@ import React, { Component, PropTypes } from 'react';
 
 export default class Button extends Component {
     render() {
-        const { className, text, onClick } = this.props;
+        const { isDisabled, className, text, onClick } = this.props;
 
         return (
-            <button className={className} onClick={onClick}>
+            <button
+                isDisabled={isDisabled}
+                className={className}
+                onClick={onClick}>
                 { text }
             </button>
         );

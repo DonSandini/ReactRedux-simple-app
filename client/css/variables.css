@@ -1,6 +1,13 @@
 :root {
     --fontSize: 1rem;
-    --mainBackgroundColor: #12345678;
-    --mainColor: #8D8986;
-    --highlightColor: hwb(190, 35%, 20%);
+    --mainBackgroundColor: #ffffff;
+    --mainColor: #43403e;
+    --mainWhite: #ffffff;
+    --mainGray: #455260;
+    --mainBlue: #6496c8;
+    --mainBlueSoft: #346392;
+    --mainBlueDark: #27496d;
+
+    --borderRadiusCommon: 5px;
+    --transitionCommon: all 200ms ease-in-out;
 }

@@ -20,6 +20,7 @@ export default class SearchInput extends Component {
             <div className="search-input-wrapper">
                 <input
                     type="text"
+                    placeholder="Search..."
                     className="search-input"
                     onChange={this.setSearchValue}
                     onKeyDown={onKeyDown}
