@@ -1,11 +1,7 @@
 import UserInfo from './UserInfo';
-import UserInfoAvatar from './UserInfoAvatar';
-import UserInfoName from './UserInfoName';
-import UserInfoRepos from './UserInfoRepos';
+import UserInfoItem from './UserInfoItem';
 
 export {
     UserInfo,
-    UserInfoAvatar,
-    UserInfoName,
-    UserInfoRepos
+    UserInfoItem
 }

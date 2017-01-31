@@ -13,3 +13,20 @@ body {
     color: var(--mainGray);
 }
 
+img {
+    width: 100%;
+    height: auto;
+}
+
+a {
+    color: var(--mainBlue);
+}
+
+a:hover {
+    color: var(--mainBlueDark)
+}
+
+.app-wrapper {
+    max-width: var(--appWrapperMaxWidth);
+    margin: 0 auto;
+}

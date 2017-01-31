@@ -4,10 +4,15 @@
     --mainColor: #43403e;
     --mainWhite: #ffffff;
     --mainGray: #455260;
+    --lightGray: #aaa6b0;
     --mainBlue: #6496c8;
     --mainBlueSoft: #346392;
     --mainBlueDark: #27496d;
 
     --borderRadiusCommon: 5px;
     --transitionCommon: all 200ms ease-in-out;
+    --mainTopOffset: 10px;
+
+    --appWrapperMaxWidth: 500px;
+    --userInfoAvatarDimentions: 60px;
 }

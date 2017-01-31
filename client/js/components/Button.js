@@ -2,11 +2,10 @@ import React, { Component, PropTypes } from 'react';
 
 export default class Button extends Component {
     render() {
-        const { isDisabled, className, text, onClick } = this.props;
+        const { className, text, onClick } = this.props;
 
         return (
             <button
-                isDisabled={isDisabled}
                 className={className}
                 onClick={onClick}>
                 { text }
