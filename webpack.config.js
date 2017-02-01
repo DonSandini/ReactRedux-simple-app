@@ -4,7 +4,7 @@ module.exports = {
     devtool: 'inline-source-map',
     devServer: {
         historyApiFallback: true,
-        contentBase: './',
+        contentBase: './client',
         hot: true
     },
     entry: [

@@ -44,6 +44,11 @@
     background: var(--mainBlueDark);
 }
 
+.user-info-container {
+    position: relative;
+    min-height: 200px;
+}
+
 .user-info-wrapper {
     display: flex;
     flex-direction: column;
@@ -66,4 +71,14 @@
     border-radius: 50%;
     border: 2px solid var(--mainGray);
     overflow: hidden;
+}
+
+.user-not-found {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    min-height: 200px;
+    text-align: center;
+
 }

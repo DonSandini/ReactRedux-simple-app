@@ -1,7 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { goHome } from '../actions/location';
 import { UserInfo } from '../components/user-info';
 
 class UserInfoContainer extends Component {
@@ -31,7 +30,6 @@ UserInfoContainer.displayName = 'UserInfoContainer';
 
 UserInfoContainer.propTypes = {
     userInfo: PropTypes.object.isRequired,
-    goHome: PropTypes.func.isRequired,
     isUserInfoFound: PropTypes.bool,
     isLoading: PropTypes.bool
 };
@@ -45,6 +43,6 @@ export default connect(
     }),
     //	Bind actions to props
     dispatch => bindActionCreators({
-        goHome
+
     }, dispatch)
 )(UserInfoContainer);

@@ -6,7 +6,10 @@ The app fetches a GitHub user using the GitHub api and displays his info.
 1. React;
 2. Redux;
 3. Redux saga;
-4. Immutablejs;
+4. React router;
+5. Redux router;
+6. Immutable JS;
+7. CSS next;
 ### All compiled with Babel.
 
 ### Setup & Build

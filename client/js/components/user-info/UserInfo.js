@@ -57,7 +57,7 @@ export default class UserInfo extends Component {
         const { isLoading } = this.props;
 
         return (
-            <div>
+            <div className="user-info-container">
                 { isLoading ?
                     <Loader />
                     : this.renderUserInfo()
