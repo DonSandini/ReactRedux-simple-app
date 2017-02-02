@@ -1,12 +1,14 @@
 var webpack = require('webpack');
+var path = require('path');
+var distPath = path.resolve('./dist');
 
 module.exports = {
     devtool: 'inline-source-map',
-    devServer: {
-        historyApiFallback: true,
-        contentBase: './client',
-        hot: true
-    },
+    // devServer: {
+    //     historyApiFallback: true,
+    //     contentBase: './client',
+    //     hot: true
+    // },
     entry: [
         'babel-polyfill',
         'webpack-hot-middleware/client',
@@ -14,7 +16,7 @@ module.exports = {
         './client/index.css'
     ],
     output: {
-        path: '/dist',
+        path: distPath,
         filename: 'bundle.js',
         publicPath: '/'
     },
