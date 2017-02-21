@@ -5,7 +5,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack && nodemon server/server.js --ignore client",
-    "serve": "webpack && node server/server.js"
+    "serve": "webpack && node server/server.js",
+    "dev-server": "webpack-dev-server"
   },
   "repository": {
     "type": "git",
@@ -37,8 +38,10 @@
     "cssnext-loader": "^1.0.1",
     "eslint": "^3.14.1",
     "eslint-plugin-react": "^6.9.0",
+    "file-loader": "^0.10.0",
     "style-loader": "^0.13.1",
-    "webpack": "^1.14.0",
+    "url-loader": "^0.5.7",
+    "webpack": "^2.2.1",
     "webpack-dev-middleware": "^1.9.0",
     "webpack-dev-server": "^2.2.1",
     "webpack-hot-middleware": "^2.15.0"

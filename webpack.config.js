@@ -4,11 +4,12 @@ var distPath = path.resolve('./dist');
 
 module.exports = {
     devtool: 'inline-source-map',
-    // devServer: {
-    //     historyApiFallback: true,
-    //     contentBase: './client',
-    //     hot: true
-    // },
+    devServer: {
+        historyApiFallback: true,
+        contentBase: './client',
+        hot: true,
+        port: 3210
+    },
     entry: [
         'babel-polyfill',
         'webpack-hot-middleware/client',
@@ -23,7 +24,7 @@ module.exports = {
     plugins: [
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin(),
+        new webpack.NoEmitOnErrorsPlugin(),
         new webpack.DefinePlugin({
             __DEVELOPMENT__: true,
             __DEVTOOLS__: true
@@ -40,8 +41,9 @@ module.exports = {
                 test: /\.css$/,
                 loader: 'style-loader!css-loader!cssnext-loader?sourceMap',
                 exclude: /node_modules/
-            }
+            },
+            { test: /\.(png|ttf|svg|ico)$/, loader: 'url-loader?limit=0' },
+            { test: /\.(eot|woff|woff2)$/, loader: 'file-loader?name=[name].[ext]' },
         ]
-    },
-    cssnext: {}
+    }
 };

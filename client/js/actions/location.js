@@ -11,3 +11,9 @@ export function goHome() {
         pathname: `/`
     })
 }
+
+export function goToPopupId(popupId) {
+    return push({
+        pathname: `/popup/${popupId}`
+    })
+}
