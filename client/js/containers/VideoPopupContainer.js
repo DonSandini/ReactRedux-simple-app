@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { goBack } from 'redux-router';
 import { VideoPopupNavigation } from '../components/video-popup';
 import { Popup } from '../components';
+import { VideoPopupItem } from '../components/video-popup';
 
 class VideoPopupContainer extends Component {
 
@@ -22,9 +23,7 @@ class VideoPopupContainer extends Component {
 
                 { popupId ?
                     <Popup onBackdropClick={goBack}>
-                        <div>
-                            this is { popupId } popup
-                        </div>
+                        <VideoPopupItem popupId={popupId} />
                     </Popup>
                     : null
                 }

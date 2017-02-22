@@ -42,8 +42,8 @@ module.exports = {
                 loader: 'style-loader!css-loader!cssnext-loader?sourceMap',
                 exclude: /node_modules/
             },
-            { test: /\.(png|ttf|svg|ico)$/, loader: 'url-loader?limit=0' },
-            { test: /\.(eot|woff|woff2)$/, loader: 'file-loader?name=[name].[ext]' },
+            { test: /\.(jpg|jpeg|png|ttf|svg|ico|mp4)$/, loader: 'file-loader?name=[name].[ext]' },
+            // { test: /\.(eot|woff|woff2)$/, loader: 'file-loader?name=[name].[ext]' },
         ]
     }
 };

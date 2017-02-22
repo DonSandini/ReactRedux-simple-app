@@ -5,11 +5,12 @@ export default class Button extends Component {
         const { className, text, onClick } = this.props;
 
         return (
-            <button
+            <div
                 className={className}
                 onClick={onClick}>
+                { this.props.children }
                 { text }
-            </button>
+            </div>
         );
     }
 }
