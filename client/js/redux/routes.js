@@ -3,7 +3,7 @@ import { Redirect, Route } from 'react-router';
 import {
     App,
     SearchContainer,
-    VideosContainer,
+    VideoPopupContainer,
     UserInfoContainer
 } from '../containers';
 
@@ -15,7 +15,11 @@ const getRoutes = ({ getState }) => (
         />
         <Route
             path="/videos"
-            component={VideosContainer}
+            component={VideoPopupContainer}
+        />
+        <Route
+            path="/videos/:popupId"
+            component={VideoPopupContainer}
         />
         <Route
             path="/user-info"

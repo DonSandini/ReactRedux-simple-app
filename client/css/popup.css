@@ -1,0 +1,78 @@
+.popup-modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    overflow-y: auto;
+    z-index: 10000;
+}
+
+.modal-wrapper {
+    position: absolute;
+    top: 50%;
+    margin-bottom: 30px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    outline: 0;
+    z-index: 1020;
+}
+
+/* START Backdrop animation */
+
+.popup-backdrop {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: var(--overlayColor);
+    opacity: 0.9;
+    transition: all .2s var(--transitionCommon);
+}
+
+.popup-entering .popup-backdrop {
+    opacity: 0.01;
+}
+
+.popup-entered .popup-backdrop {
+    opacity: 0.9;
+}
+
+/* END Backdrop animation */
+
+/* START Showing default animation */
+
+.popup-entering .modal-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -20px;
+    transform: translate(-50%, -50%);
+    transition: none;
+}
+
+.popup-entered .modal-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-top: -20px;
+    transform: translate(-50%, -50%);
+    transition: all .2s var(--transitionCommon);
+}
+
+.popup-exiting .modal-wrapper {
+    opacity: 1;
+    transition: all .2s var(--transitionCommon);
+}
+
+.popup-exited .modal-wrapper {
+    opacity: 0.01;
+    transition: all .2s var(--transitionCommon);
+}
+
+/* END Showing default animation */

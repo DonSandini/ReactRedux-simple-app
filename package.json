@@ -15,11 +15,13 @@
   "author": "Alexander Georgiev",
   "license": "ISC",
   "dependencies": {
+    "classnames": "^2.2.5",
     "express": "^4.14.0",
     "history": "2.0.1",
     "immutable": "^3.8.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
+    "react-overlays": "^0.6.11",
     "react-redux": "^5.0.2",
     "react-router": "2.6.0",
     "redux": "^3.6.0",

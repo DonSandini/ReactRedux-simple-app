@@ -15,12 +15,14 @@ export default class Button extends Component {
 }
 
 Button.defaultProps = {
+    buttonId: '',
     className: '',
     text: '',
     onClick: () => {}
 };
 
 Button.propTypes = {
+    buttonId: PropTypes.string.isRequired,
     className: PropTypes.string.isRequired,
     text: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired
