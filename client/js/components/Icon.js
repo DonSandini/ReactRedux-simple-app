@@ -2,22 +2,27 @@ import React, { Component, PropTypes } from 'react';
 
 export default class Icon extends Component {
     render() {
-        const { iconId } = this.props;
-        
+        const { iconId, onClick } = this.props;
+        const imageUrl = require(`../../images/icon-${iconId}.png`);
+
         return (
-            <img
-                className={`icon-${iconId}`}
-                src={`./images/icon-${iconId}.png`}
-                alt=""
-            />
+            <div className={`icon-wrapper icon-wrapper-${iconId}`} onClick={onClick}>
+                <img
+                    className={`icon-${iconId}`}
+                    src={imageUrl}
+                    alt=""
+                />
+            </div>
         );
     }
 }
 
 Icon.defaultProps = {
-    iconId: ''
+    iconId: '',
+    onClick: () => {}
 };
 
 Icon.propTypes = {
-    iconId: PropTypes.string.isRequired
+    iconId: PropTypes.string.isRequired,
+    onClick: PropTypes.func.isRequired
 };

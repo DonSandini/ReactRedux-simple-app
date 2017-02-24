@@ -5,6 +5,7 @@ import { goBack } from 'redux-router';
 import { VideoPopupNavigation } from '../components/video-popup';
 import { Popup } from '../components';
 import { VideoPopupItem } from '../components/video-popup';
+import { setCommentText } from '../actions/video-popup';
 
 class VideoPopupContainer extends Component {
 
@@ -15,7 +16,9 @@ class VideoPopupContainer extends Component {
     }
 
     render() {
-        const { popupId, goBack } = this.props;
+        const { popupId } = this.props;
+        const { goBack, setCommentText } = this.props;
+
 
         return(
             <div className="video-popup-container">
@@ -23,7 +26,11 @@ class VideoPopupContainer extends Component {
 
                 { popupId ?
                     <Popup onBackdropClick={goBack}>
-                        <VideoPopupItem popupId={popupId} />
+                        <VideoPopupItem
+                            closePopup={goBack}
+                            popupId={popupId}
+                            setCommentText={setCommentText}
+                        />
                     </Popup>
                     : null
                 }
@@ -35,7 +42,8 @@ class VideoPopupContainer extends Component {
 VideoPopupContainer.displayName = 'VideoPopupContainer';
 
 VideoPopupContainer.propTypes = {
-    goBack: PropTypes.func.isRequired
+    goBack: PropTypes.func.isRequired,
+    setCommentText: PropTypes.func.isRequired,
 };
 
 export default connect(
@@ -45,6 +53,7 @@ export default connect(
     }),
     //	Bind actions to props
     dispatch => bindActionCreators({
-        goBack
+        goBack,
+        setCommentText
     }, dispatch)
 )(VideoPopupContainer);

@@ -30,3 +30,37 @@ a:hover {
     max-width: var(--appWrapperMaxWidth);
     margin: 0 auto;
 }
+
+::-webkit-input-placeholder {
+    font-style: italic;
+    text-transform: lowercase;
+}
+
+::-moz-placeholder {
+    font-style: italic;
+    text-transform: lowercase;
+}
+
+:-ms-input-placeholder {
+    font-style: italic;
+    text-transform: lowercase;
+}
+
+.button {
+    color: var(--buttonCommonColor);
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 4px 15px;
+    border-radius: var(--buttonBorderRadius);
+    cursor: pointer;
+}
+
+.button-black {
+    background: var(--buttonBlackBackgroundColor);
+
+}
+
+.button-red {
+    background: var(--buttonRedBackgroundColor);
+}

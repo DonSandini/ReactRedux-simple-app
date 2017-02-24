@@ -1,0 +1,40 @@
+.icon-wrapper {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.icon-like {
+    width: var(--iconDimensions);
+    height: 14px;
+}
+
+.icon-comment {
+    width: var(--iconDimensions);
+    height: var(--iconDimensions);
+}
+
+.icon-mute {
+    width: var(--iconDimensions);
+    height: var(--iconDimensions);
+}
+
+.icon-pause {
+    width: 10px;
+    height: 17px;
+}
+
+.icon-report {
+    width: var(--iconDimensions);
+    height: var(--iconDimensions);
+}
+
+.icon-share {
+    width: var(--iconDimensions);
+    height: var(--iconDimensions);
+}
+
+.icon-close {
+    width: 6px;
+    height: 6px;
+}

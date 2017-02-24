@@ -27,3 +27,20 @@ export default () => {
 
     return enhancedStore;
 };
+
+
+
+/*
+*const persistedState = loadState();
+ const store = createStore(
+ rootReducer,
+ persistedState
+ );
+
+ store.subscribe(() => {
+ saveState({
+ videoPopup: store.getState().videoPopup
+ })
+ });
+*
+* */

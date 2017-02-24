@@ -4,6 +4,7 @@ import Loader from './Loader';
 import Navigation from './Navigation';
 import Popup from './Popup';
 import Icon from './Icon';
+import InputField from './InputField';
 
 export {
     Button,
@@ -11,5 +12,6 @@ export {
     Loader,
     Navigation,
     Popup,
-    Icon
+    Icon,
+    InputField
 }
