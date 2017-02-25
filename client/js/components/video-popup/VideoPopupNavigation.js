@@ -1,16 +1,16 @@
 import React, { Component, PropTypes } from 'react';
 import { Link } from 'react-router';
+import { Button } from '../';
 
 export default class VideoPopupNavigation extends Component {
     render() {
         return (
             <div className="video-popup-navigation">
-                <Link to="/videos/1" activeClassName="active">
-                    open popup 1
-                </Link>
-                <Link to="/videos/2" activeClassName="active">
-                    open popup 2
-                </Link>
+                <Button className="button-black">
+                    <Link to="/videos/1" activeClassName="active">
+                        Open popup
+                    </Link>
+                </Button>
             </div>
         );
     }

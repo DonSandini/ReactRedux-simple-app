@@ -4,9 +4,8 @@
   "description": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "webpack && nodemon server/server.js --ignore client",
     "serve": "webpack && node server/server.js",
-    "dev-server": "webpack-dev-server"
+    "dev": "webpack-dev-server"
   },
   "repository": {
     "type": "git",

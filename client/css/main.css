@@ -64,3 +64,38 @@ a:hover {
 .button-red {
     background: var(--buttonRedBackgroundColor);
 }
+
+.button a {
+    text-decoration: none;
+}
+
+.button.like,
+.button.share,
+.button.comment,
+.button.report {
+    display: flex;
+    justify-content: center;
+    color: #696f77;
+    font-style: normal;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.button.like img,
+.button.share img,
+.button.comment img,
+.button.report img {
+    margin-right: 6px;
+}
+
+.button.like,
+.button.share {
+    margin-right: 20px;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border-radius: 50%;
+}

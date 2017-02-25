@@ -9,17 +9,19 @@
     --mainBlueSoft: #346392;
     --mainBlueDark: #27496d;
     --overlayColor: #dcdcdc;
-    --commentTextAreaBorderColor: #f0f0ee;
+    --commentInputBorderColor: #f0f0ee;
+    --replyInputBorderColor: #efefed;
     --buttonBlackBackgroundColor: #363636;
     --buttonRedBackgroundColor: #ea445b;
     --buttonCommonColor: #ffffff;
     --buttonBorderRadius: 2px;
 
-    --borderRadiusCommon: 5px;
+    --borderRadiusCommon: 2px;
     --transitionCommon: all 2000ms ease-in-out;
     --mainTopOffset: 10px;
 
     --appWrapperMaxWidth: 500px;
+    --maxModalWidth: 550px;
     --userInfoAvatarDimentions: 60px;
     --iconDimensions: 16px;
 }

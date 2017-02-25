@@ -1,3 +1,6 @@
+import { createStore } from 'redux';
+import rootReducer from '../reducers/root';
+
 export const loadState = () => {
     try {
         const serializedState = localStorage.getItem('state');
@@ -18,3 +21,8 @@ export const saveState = (state) => {
         // Ignore write errors.
     }
 };
+
+export const persistedStore = createStore(
+    rootReducer,
+    loadState()
+);

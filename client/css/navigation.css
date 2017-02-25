@@ -2,3 +2,15 @@
     display: flex;
     justify-content: center;
 }
+
+.main-navigation .button {
+    padding: 0;
+    margin: 10px;
+}
+
+.main-navigation a {
+    padding: 10px 20px;
+    color: #FFFFFF;
+    background: var(--mainBlue);
+    border-radius: var(--borderRadiusCommon)
+}

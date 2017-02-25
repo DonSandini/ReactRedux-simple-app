@@ -9,7 +9,6 @@ import rootReducer from '../reducers/root';
 import { createHistory } from 'history';
 
 const sagaMiddleware = createSagaMiddleware();
-
 let storeEnhancers = [
     applyMiddleware(sagaMiddleware),
     reduxReactRouter({ getRoutes, createHistory }),
@@ -27,20 +26,3 @@ export default () => {
 
     return enhancedStore;
 };
-
-
-
-/*
-*const persistedState = loadState();
- const store = createStore(
- rootReducer,
- persistedState
- );
-
- store.subscribe(() => {
- saveState({
- videoPopup: store.getState().videoPopup
- })
- });
-*
-* */
