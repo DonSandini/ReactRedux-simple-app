@@ -1,4 +1,4 @@
-import { SET_COMMENT_TEXT } from '../constants/video-popup';
+import { SET_COMMENT_TEXT, SET_REPLY_TEXT, SET_VIDEO_ID } from '../constants/video-popup';
 
 export function setCommentText({ commentText }) {
     return {
@@ -6,3 +6,18 @@ export function setCommentText({ commentText }) {
         payload: { commentText }
     };
 }
+
+export function setReplyText({ replyText }) {
+    return {
+        type: SET_REPLY_TEXT,
+        payload: { replyText }
+    };
+}
+
+export function setVideoId({ videoId }) {
+    return {
+        type: SET_VIDEO_ID,
+        payload: { videoId }
+    };
+}
+

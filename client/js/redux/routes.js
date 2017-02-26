@@ -6,6 +6,9 @@ import {
     VideoPopupContainer,
     UserInfoContainer
 } from '../containers';
+import {
+    VideoPopupNavigation,
+} from '../components/video-popup';
 
 const getRoutes = ({ getState }) => (
     <Route path="/" component={App}>
@@ -15,10 +18,14 @@ const getRoutes = ({ getState }) => (
         />
         <Route
             path="/videos"
+            component={VideoPopupNavigation}
+        />
+        <Route
+            path="/video-popup"
             component={VideoPopupContainer}
         />
         <Route
-            path="/videos/:popupId"
+            path="/video-popup/:popupId"
             component={VideoPopupContainer}
         />
         <Route

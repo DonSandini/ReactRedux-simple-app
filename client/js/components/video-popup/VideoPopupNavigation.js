@@ -7,7 +7,7 @@ export default class VideoPopupNavigation extends Component {
         return (
             <div className="video-popup-navigation">
                 <Button className="button-black">
-                    <Link to="/videos/1" activeClassName="active">
+                    <Link to="/video-popup" activeClassName="active">
                         Open popup
                     </Link>
                 </Button>
@@ -20,7 +20,8 @@ VideoPopupNavigation.defaultProps = {
     VideoPopupNavigationId: '',
     className: '',
     text: '',
-    onClick: () => {}
+    onClick: () => {
+    }
 };
 
 VideoPopupNavigation.propTypes = {
