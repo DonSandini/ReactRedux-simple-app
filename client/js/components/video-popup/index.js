@@ -2,7 +2,8 @@ import VideoPopupNavigation from './VideoPopupNavigation';
 import VideoPopupVideoActions from './VideoPopupVideoActions';
 import VideoPopupCommentActions from './VideoPopupCommentActions';
 import VideoPopupCommentReply from './VideoPopupCommentReply';
-import VideoPopupProfileInfo from './VideoPopupProfileInfo';
+import VideoPopupCommentReplyActions from './VideoPopupCommentReplyActions';
+import VideoPopupCommentMessage from './VideoPopupCommentMessage';
 import VideoPopupInput from './VideoPopupInput';
 import VideoPopupItem from './VideoPopupItem';
 
@@ -11,7 +12,8 @@ export {
     VideoPopupVideoActions,
     VideoPopupCommentActions,
     VideoPopupCommentReply,
-    VideoPopupProfileInfo,
+    VideoPopupCommentReplyActions,
+    VideoPopupCommentMessage,
     VideoPopupInput,
     VideoPopupItem
 }

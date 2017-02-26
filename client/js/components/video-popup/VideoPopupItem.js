@@ -1,9 +1,10 @@
 import React, { Component, PropTypes } from 'react';
-import { InputField, YoutubeVideo } from '../'
+import { InputField, NoItems, YoutubeVideo } from '../'
 import {
     VideoPopupVideoActions,
-    VideoPopupProfileInfo,
-    VideoPopupCommentReply
+    VideoPopupCommentMessage,
+    VideoPopupCommentReply,
+    VideoPopupCommentReplyActions
 } from './'
 
 export default class VideoPopupItem extends Component {
@@ -12,12 +13,22 @@ export default class VideoPopupItem extends Component {
 
         this.onCommentInputChange = this.onCommentInputChange.bind(this);
         this.onReplyTextChange = this.onReplyTextChange.bind(this);
+        this.onCommentInputKeyUp = this.onCommentInputKeyUp.bind(this);
     }
-    //TODO: finish comments and replies consumation from components.
+
     onCommentInputChange(event) {
         const { setCommentText } = this.props;
 
         setCommentText({ commentText: event.target.value });
+    }
+
+    onCommentInputKeyUp(event) {
+        if (event.keyCode === 13 && event.target.value !== '') { // on Enter key press
+            const { videoId } = this.props;
+            const { addComment } = this.props;
+
+            addComment({ id: videoId, text: event.target.value })
+        }
     }
 
     onReplyTextChange(event) {
@@ -26,14 +37,60 @@ export default class VideoPopupItem extends Component {
         setReplyText({ replyText: event.target.value });
     }
 
+    renderCommentReplies(replies) {
+        if (!replies.size) {
+            return <NoItems itemsName="replies"/>;
+        }
+
+        return (
+            <div className="replies-container">
+                { replies.map(reply =>
+                    <VideoPopupCommentReply
+                        replyId={reply.get('id')}
+                        replyMessage={reply.get('text')}
+                        replyAuthor={reply.get('author')}
+                        replyDate={reply.get('data')}
+                    />
+                )}
+                <VideoPopupCommentReplyActions />
+            </div>
+        );
+    }
+
+    renderVideoComments() {
+        const { videoComments } = this.props;
+
+        if (!videoComments.size) {
+            return (
+                <NoItems itemsName="comments" />
+            )
+        }
+
+        return (
+            <div className="comment-section">
+                { videoComments.map(comment =>
+                    <div>
+                        <VideoPopupCommentMessage
+                            commentAuthor={videoComments.getIn([comment, 'author' ])}
+                            commentDate={videoComments.getIn([comment, 'date' ])}
+                            commentMessage={videoComments.getIn([comment, 'text' ])}
+
+                        />
+                        { this.renderCommentReplies(comment.get('replies')) }
+                    </div>
+                )}
+            </div>
+        )
+    }
+
     render() {
-        const { videoData } = this.props;
-        debugger
+        const { videoEmbedUrl } = this.props;
+
         return (
             <section className="video-popup-item">
                 <div className="video-popup-top-part">
                     <YoutubeVideo
-                        videoUrl={videoData.get('embedUrl')}
+                        videoUrl={videoEmbedUrl}
                     />
                     <VideoPopupVideoActions />
                     <InputField
@@ -42,12 +99,11 @@ export default class VideoPopupItem extends Component {
                         className="video-comment-input"
                         placeholder="comment..."
                         onChange={this.onCommentInputChange}
+                        onKeyUp={this.onCommentInputKeyUp}
                     />
                 </div>
-                <div className="comment-section">
-                    <VideoPopupProfileInfo />
-                    <VideoPopupCommentReply />
-                </div>
+
+                { this.renderVideoComments() }
             </section>
         );
     }
@@ -59,6 +115,7 @@ VideoPopupItem.defaultProps = {
 
 VideoPopupItem.propTypes = {
     videoUrl: PropTypes.string.isRequired,
+    addComment: PropTypes.func.isRequired,
     setCommentText: PropTypes.func.isRequired,
     setReplyText: PropTypes.func.isRequired,
 };

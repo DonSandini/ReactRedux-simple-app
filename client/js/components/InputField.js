@@ -3,13 +3,14 @@ import React, { Component, PropTypes } from 'react';
 export default class InputField extends Component {
     render() {
         const { className, containerClassName, placeholder, type, maxLength } = this.props;
-        const { onChange, onClick } = this.props;
+        const { onChange, onClick, onKeyUp } = this.props;
         const fieldProps = {
             className: `input-field ${className}`,
             placeholder: placeholder,
             maxLength: maxLength,
             onChange: onChange,
-            onClick: onClick
+            onClick: onClick,
+            onKeyUp: onKeyUp
         };
 
         return (
@@ -31,7 +32,8 @@ InputField.defaultProps = {
     placeholder: '',
     maxLength: '',
     onChange: () => {},
-    onClick: () => {}
+    onClick: () => {},
+    onKeyUp: () => {},
 };
 
 InputField.propTypes = {
@@ -40,5 +42,6 @@ InputField.propTypes = {
     placeholder: PropTypes.string.isRequired,
     maxLength: PropTypes.string.isRequired,
     onChange: PropTypes.func.isRequired,
-    onClick: PropTypes.func.isRequired
+    onClick: PropTypes.func.isRequired,
+    onKeyUp: PropTypes.func.isRequired
 };

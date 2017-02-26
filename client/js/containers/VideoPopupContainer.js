@@ -5,12 +5,17 @@ import { goBack } from 'redux-router';
 import { Popup } from '../components';
 import { VideoPopupInput, VideoPopupItem } from '../components/video-popup';
 import { Icon } from '../components';
-import { setCommentText, setReplyText, consumeYoutubeVideo } from '../actions/video-popup';
+import {
+    addComment,
+    setCommentText,
+    setReplyText,
+    consumeYoutubeVideo
+} from '../actions/video-popup';
 
 class VideoPopupContainer extends Component {
     render() {
         const { shouldShowVideoPopup, currentVideoId, videoIds, videosById } = this.props;
-        const { goBack, setCommentText, setReplyText, consumeYoutubeVideo } = this.props;
+        const { addComment, goBack, setCommentText, setReplyText, consumeYoutubeVideo } = this.props;
 
         return (
             <Popup
@@ -21,7 +26,9 @@ class VideoPopupContainer extends Component {
                 { shouldShowVideoPopup && !!videoIds.size ?
                     <VideoPopupItem
                         videoId={currentVideoId}
-                        videoData={videosById.get(currentVideoId)}
+                        videoEmbedUrl={videosById.getIn([currentVideoId, 'embedUrl'])}
+                        videoComments={videosById.getIn([currentVideoId, 'comments'])}
+                        addComment={addComment}
                         setCommentText={setCommentText}
                         setReplyText={setReplyText}
                     />
@@ -36,6 +43,7 @@ VideoPopupContainer.displayName = 'VideoPopupContainer';
 
 VideoPopupContainer.defaultProps = {
     shouldShowVideoPopup: false,
+    addComment: () => {},
     goBack: () => {},
     setCommentText: () => {},
     setReplyText: () => {},
@@ -47,6 +55,7 @@ VideoPopupContainer.propTypes = {
     currentVideoId: PropTypes.string.isRequired,
     videoIds: PropTypes.object.isRequired,
     videosById: PropTypes.object.isRequired,
+    addComment: PropTypes.func.isRequired,
     goBack: PropTypes.func.isRequired,
     setCommentText: PropTypes.func.isRequired,
     setReplyText: PropTypes.func.isRequired,
@@ -63,6 +72,7 @@ export default connect(
     }),
     //	Bind actions to props
     dispatch => bindActionCreators({
+        addComment,
         goBack,
         setCommentText,
         setReplyText,

@@ -18,17 +18,6 @@ export default class VideoPopupProfileReply extends Component {
                         magnam modi perferendis praesentium recusandae suscipit vitae voluptates.
                     </div>
                 </div>
-                <div className="reply-actions">
-                    <Button className="active" text="comment" />
-                    <Button text="photo" />
-                    <Button text="feedback" />
-                </div>
-                <InputField
-                    type="text"
-                    className="video-comment-reply"
-                    placeholder="reply..."
-                    onChange={this.onReplyTextChange}
-                />
             </div>
         );
     }

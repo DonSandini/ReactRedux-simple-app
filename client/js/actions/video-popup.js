@@ -1,4 +1,10 @@
-import { CONSUME_YOUTUBE_VIDEO, SET_COMMENT_TEXT, SET_REPLY_TEXT, SET_POPUP_VIDEO } from '../constants/video-popup';
+import {
+    ADD_COMMENT,
+    CONSUME_YOUTUBE_VIDEO,
+    SET_COMMENT_TEXT,
+    SET_REPLY_TEXT,
+    SET_POPUP_VIDEO
+} from '../constants/video-popup';
 
 export function setCommentText({ commentText }) {
     return {
@@ -27,4 +33,12 @@ export function setPopupVideo({ videoData }) {
         payload: { videoData }
     };
 }
+
+export function addComment({ id, text }) {
+    return {
+        type: ADD_COMMENT,
+        payload: { id, text }
+    };
+}
+
 
