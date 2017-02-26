@@ -88,5 +88,5 @@ Popup.propTypes = {
     'onEnter': PropTypes.func,
     'onBackdropClick': PropTypes.func,
     'onFocus': PropTypes.func,
-    'children': PropTypes.object
+    'children': PropTypes.any
 };

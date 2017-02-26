@@ -1,4 +1,4 @@
-import { SET_COMMENT_TEXT, SET_REPLY_TEXT, SET_VIDEO_ID } from '../constants/video-popup';
+import { CONSUME_YOUTUBE_VIDEO, SET_COMMENT_TEXT, SET_REPLY_TEXT, SET_POPUP_VIDEO } from '../constants/video-popup';
 
 export function setCommentText({ commentText }) {
     return {
@@ -14,10 +14,17 @@ export function setReplyText({ replyText }) {
     };
 }
 
-export function setVideoId({ videoId }) {
+export function consumeYoutubeVideo({ videoUrl }) {
     return {
-        type: SET_VIDEO_ID,
-        payload: { videoId }
+        type: CONSUME_YOUTUBE_VIDEO,
+        payload: { videoUrl }
+    };
+}
+
+export function setPopupVideo({ videoData }) {
+    return {
+        type: SET_POPUP_VIDEO,
+        payload: { videoData }
     };
 }
 

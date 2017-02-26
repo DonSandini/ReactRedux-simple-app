@@ -2,21 +2,8 @@ import { call, put, takeLatest } from 'redux-saga/effects';
 import { GET_USER_INFO, GITHUB_USER_API } from '../constants/users';
 import { startLoading, stopLoading } from '../actions/loaders';
 import { consumeUserInfo, resetUserInfo, userNotFound } from '../actions/users';
+import { fetchFromApi } from '../utils/async';
 
-const fetchFromApi = (url) => fetch(url)
-    .then((response) => response.json()) // Transform the data into json
-    .then(data => {
-        return {
-            success: true,
-            ...data
-        }
-    })
-    .catch(error => {
-        return {
-            success: false,
-            ...error
-        }
-    });
 
 function* getUserInfoSuccess(response) {
     if (response.message) {

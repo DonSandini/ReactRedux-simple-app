@@ -10,26 +10,30 @@ export default class VideoPopupItem extends Component {
     constructor() {
         super();
 
-        this.onCommentTextareaChange = this.onCommentTextareaChange.bind(this);
+        this.onCommentInputChange = this.onCommentInputChange.bind(this);
         this.onReplyTextChange = this.onReplyTextChange.bind(this);
     }
-
-    onCommentTextareaChange(event) {
+    //TODO: finish comments and replies consumation from components.
+    onCommentInputChange(event) {
         const { setCommentText } = this.props;
 
         setCommentText({ commentText: event.target.value });
     }
 
     onReplyTextChange(event) {
+        const { setReplyText } = this.props;
 
+        setReplyText({ replyText: event.target.value });
     }
 
     render() {
+        const { videoData } = this.props;
+        debugger
         return (
             <section className="video-popup-item">
                 <div className="video-popup-top-part">
                     <YoutubeVideo
-                        url="https://www.youtube.com/watch?v=kWv19a5F-gk"
+                        videoUrl={videoData.get('embedUrl')}
                     />
                     <VideoPopupVideoActions />
                     <InputField
@@ -37,7 +41,7 @@ export default class VideoPopupItem extends Component {
                         containerClassName="video-comment"
                         className="video-comment-input"
                         placeholder="comment..."
-                        onChange={this.onCommentTextareaChange}
+                        onChange={this.onCommentInputChange}
                     />
                 </div>
                 <div className="comment-section">
@@ -50,9 +54,11 @@ export default class VideoPopupItem extends Component {
 }
 
 VideoPopupItem.defaultProps = {
-    videoId: ''
+    videoUrl: ''
 };
 
 VideoPopupItem.propTypes = {
-    videoId: PropTypes.string.isRequired
+    videoUrl: PropTypes.string.isRequired,
+    setCommentText: PropTypes.func.isRequired,
+    setReplyText: PropTypes.func.isRequired,
 };

@@ -12,7 +12,6 @@ const store = {
     persistedStore
 };
 
-
 store.subscribe(throttle(
     () => {
         saveState({
@@ -22,7 +21,6 @@ store.subscribe(throttle(
     1000
 ));
 
-console.log(store.getState().videoPopup.toJS())
 const rootElement = document.getElementById('app');
 let components = [
     <Root key="root" store={store} />

@@ -1,17 +1,21 @@
 import React, { Component, PropTypes } from 'react';
 import { InputField } from '../'
+import { isValidYoutubeUrl } from '../../utils/video';
 
 export default class VideoPopupItem extends Component {
     constructor() {
         super();
 
-        this.onSearchVideo = this.onSearchVideo.bind(this);
+        this.onVideoInputChange = this.onVideoInputChange.bind(this);
     }
 
-    onSearchVideo(event) {
-        const { setVideoId } = this.props;
-
-        debugger;
+    onVideoInputChange(event) {
+        const { consumeYoutubeVideo } = this.props;
+        const inputText = event.target.value;
+        
+        if (isValidYoutubeUrl(inputText)) {
+            consumeYoutubeVideo({ videoUrl: inputText })
+        }
     }
 
     render() {
@@ -21,7 +25,7 @@ export default class VideoPopupItem extends Component {
                     type="text"
                     className="search-video"
                     placeholder="Paste youtube video ..."
-                    onChange={this.onSearchVideo}
+                    onChange={this.onVideoInputChange}
                 />
             </section>
         );
@@ -29,10 +33,9 @@ export default class VideoPopupItem extends Component {
 }
 
 VideoPopupItem.defaultProps = {
-    setVideoId: () => {
-    }
+    consumeYoutubeVideo: () => {}
 };
 
 VideoPopupItem.propTypes = {
-    setVideoId: PropTypes.func.isRequired
+    consumeYoutubeVideo: PropTypes.func.isRequired
 };

@@ -5,12 +5,12 @@ import { goBack } from 'redux-router';
 import { Popup } from '../components';
 import { VideoPopupInput, VideoPopupItem } from '../components/video-popup';
 import { Icon } from '../components';
-import { setCommentText, setReplyText, setVideoId } from '../actions/video-popup';
+import { setCommentText, setReplyText, consumeYoutubeVideo } from '../actions/video-popup';
 
 class VideoPopupContainer extends Component {
     render() {
-        const { videoId } = this.props;
-        const { goBack, setCommentText, setReplyText, setVideoId } = this.props;
+        const { shouldShowVideoPopup, currentVideoId, videoIds, videosById } = this.props;
+        const { goBack, setCommentText, setReplyText, consumeYoutubeVideo } = this.props;
 
         return (
             <Popup
@@ -18,13 +18,14 @@ class VideoPopupContainer extends Component {
                 onBackdropClick={goBack}
             >
                 <Icon iconId="close" onClick={goBack}/>
-                { !videoId ?
+                { shouldShowVideoPopup && !!videoIds.size ?
                     <VideoPopupItem
-                        videoId={videoId}
+                        videoId={currentVideoId}
+                        videoData={videosById.get(currentVideoId)}
                         setCommentText={setCommentText}
                         setReplyText={setReplyText}
                     />
-                    : <VideoPopupInput setVideoId={setVideoId}/>
+                    : <VideoPopupInput consumeYoutubeVideo={consumeYoutubeVideo}/>
                 }
             </Popup>
         );
@@ -34,31 +35,37 @@ class VideoPopupContainer extends Component {
 VideoPopupContainer.displayName = 'VideoPopupContainer';
 
 VideoPopupContainer.defaultProps = {
-    videoId: '',
+    shouldShowVideoPopup: false,
     goBack: () => {},
     setCommentText: () => {},
     setReplyText: () => {},
-    setVideoId: () => {}
+    consumeYoutubeVideo: () => {}
 };
 
 VideoPopupContainer.propTypes = {
-    videoId: PropTypes.string.isRequired,
+    shouldShowVideoPopup: PropTypes.bool.isRequired,
+    currentVideoId: PropTypes.string.isRequired,
+    videoIds: PropTypes.object.isRequired,
+    videosById: PropTypes.object.isRequired,
     goBack: PropTypes.func.isRequired,
     setCommentText: PropTypes.func.isRequired,
     setReplyText: PropTypes.func.isRequired,
-    setVideoId: PropTypes.func.isRequired
+    consumeYoutubeVideo: PropTypes.func.isRequired
 };
 
 export default connect(
     //	Map state to props
     state => ({
-        videoId: state.router.params.popupId
+        shouldShowVideoPopup: state.videoPopup.get('shouldShowVideoPopup'),
+        currentVideoId: state.videoPopup.get('currentVideoId'),
+        videoIds: state.videoPopup.get('videoIds'),
+        videosById: state.videoPopup.get('videosById')
     }),
     //	Bind actions to props
     dispatch => bindActionCreators({
         goBack,
         setCommentText,
         setReplyText,
-        setVideoId
+        consumeYoutubeVideo
     }, dispatch)
 )(VideoPopupContainer);
