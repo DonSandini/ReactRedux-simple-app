@@ -18,5 +18,5 @@ Avatar.defaultProps = {
 };
 
 Avatar.propTypes = {
-    avatarId: PropTypes.string.isRequired
+    avatarId: PropTypes.any.isRequired
 };

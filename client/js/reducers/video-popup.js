@@ -1,5 +1,7 @@
 import {
     ADD_COMMENT,
+    ADD_REPLY,
+    SET_ACTIVE_COMMENT,
     SET_COMMENT_TEXT,
     SET_REPLY_TEXT,
     SET_POPUP_VIDEO,
@@ -8,9 +10,10 @@ import {
 import Immutable from 'immutable';
 
 const initialReplyState = Immutable.Map({
+    commentId: '',
     id: '',
     text: '',
-    author: '',
+    author: '1',
     date: '',
     isReply: true
 });
@@ -31,6 +34,7 @@ const initialVideoState = Immutable.Map({
 });
 
 const initialState = Immutable.Map({
+    activeCommentId: '',
     commentText: '',
     replyText: '',
     shouldShowVideoPopup: false,
@@ -59,8 +63,9 @@ export default function (state = initialState, action = {}) {
             const createDate = +new Date();
 
             state = state.setIn(
-                [ 'videosById', action.payload.id, 'comments', 'replies', createDate ],
+                [ 'videosById', action.payload.videoId, 'comments', action.payload.commentId, 'replies', createDate ],
                 initialReplyState.merge({
+                    commentId: action.payload.videoId,
                     id: createDate,
                     text: action.payload.text,
                     date: createDate
@@ -88,6 +93,9 @@ export default function (state = initialState, action = {}) {
                     })
                 );
             }
+            break;
+        case SET_ACTIVE_COMMENT:
+            state = state.set('activeCommentId', action.payload.commentId);
             break;
         case RESET_VIDEO_POPUP:
             state = initialState;

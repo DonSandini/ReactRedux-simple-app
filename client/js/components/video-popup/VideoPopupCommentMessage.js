@@ -2,12 +2,12 @@ import React, { Component, PropTypes } from 'react';
 import { Avatar } from '../';
 import { VideoPopupCommentActions } from './';
 
-export default class VideoPopupProfileInfo extends Component {
+export default class VideoPopupCommentMessage extends Component {
     render() {
         const { commentAuthor, commentDate, commentMessage } = this.props;
 
         return (
-            <div className="comment-item">
+            <div>
                 <div className="comment-profile-meta">
                     <Avatar avatarId={1}/>
                     <div className="comment-profile-meta-inner">
@@ -19,23 +19,25 @@ export default class VideoPopupProfileInfo extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="comment-message">
-                    { commentMessage }
+                <div className="comment-item">
+                    <div className="comment-message">
+                        { commentMessage }
+                    </div>
+                    <VideoPopupCommentActions />
                 </div>
-                <VideoPopupCommentActions />
             </div>
         );
     }
 }
 
-VideoPopupProfileInfo.defaultProps = {
+VideoPopupCommentMessage.defaultProps = {
     commentAuthor: '',
     commentDate: '',
     commentMessage: ''
 };
 
-VideoPopupProfileInfo.propTypes = {
+VideoPopupCommentMessage.propTypes = {
     commentAuthor: PropTypes.string.isRequired,
-    commentDate: PropTypes.string.isRequired,
+    commentDate: PropTypes.number.isRequired,
     commentMessage: PropTypes.string.isRequired
 };

@@ -1,28 +1,35 @@
 import React, { Component, PropTypes } from 'react';
-import { Avatar, Button, InputField } from '../'
+import { Avatar } from '../'
 
 export default class VideoPopupProfileReply extends Component {
     render() {
+        const { replyMessage, replyAuthor, replyDate } = this.props;
+
         return (
-            <div className="reply-section">
-                <div className="reply-message">
-                    <div className="reply-profile">
-                        <Avatar  avatarId={1}/>
-                        <div className="reply-meta">
-                            <div className="reply-author">Pesho</div>
-                            <div className="reply-date">March 7, 2013 at 7:30 pm</div>
-                        </div>
+            <div className="reply-message">
+                <div className="reply-profile">
+                    <Avatar avatarId={1}/>
+                    <div className="reply-meta">
+                        <div className="reply-author">{replyAuthor}</div>
+                        <div className="reply-date">{replyDate}</div>
                     </div>
-                    <div className="reply-message-content">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad corporis deleniti dolorem
-                        magnam modi perferendis praesentium recusandae suscipit vitae voluptates.
-                    </div>
+                </div>
+                <div className="reply-message-content">
+                    {replyMessage}
                 </div>
             </div>
         );
     }
 }
 
-VideoPopupProfileReply.defaultProps = {};
+VideoPopupProfileReply.defaultProps = {
+    replyMessage: '',
+    replyAuthor: '',
+    replyDate: 0
+};
 
-VideoPopupProfileReply.propTypes = {};
+VideoPopupProfileReply.propTypes = {
+    replyMessage: PropTypes.string.isRequired,
+    replyAuthor: PropTypes.string.isRequired,
+    replyDate: PropTypes.number.isRequired
+};

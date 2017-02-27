@@ -1,6 +1,8 @@
 import {
     ADD_COMMENT,
+    ADD_REPLY,
     CONSUME_YOUTUBE_VIDEO,
+    SET_ACTIVE_COMMENT,
     SET_COMMENT_TEXT,
     SET_REPLY_TEXT,
     SET_POPUP_VIDEO
@@ -34,10 +36,24 @@ export function setPopupVideo({ videoData }) {
     };
 }
 
+export function setActiveComment({ commentId }) {
+    return {
+        type: SET_ACTIVE_COMMENT,
+        payload: { commentId }
+    };
+}
+
 export function addComment({ id, text }) {
     return {
         type: ADD_COMMENT,
         payload: { id, text }
+    };
+}
+
+export function addReply({ videoId, commentId, text }) {
+    return {
+        type: ADD_REPLY,
+        payload: { videoId, commentId, text }
     };
 }
 

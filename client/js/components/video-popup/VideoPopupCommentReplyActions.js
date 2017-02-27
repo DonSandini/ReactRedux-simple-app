@@ -3,6 +3,8 @@ import { Avatar, Button, InputField } from '../'
 
 export default class VideoPopupCommentReplyActions extends Component {
     render() {
+        const { onReplySubmit } = this.props;
+
         return (
             <div className="reply-actions-container">
                 <div className="reply-actions">
@@ -14,13 +16,17 @@ export default class VideoPopupCommentReplyActions extends Component {
                     type="text"
                     className="video-comment-reply"
                     placeholder="reply..."
-                    onChange={this.onReplyTextChange}
+                    onKeyUp={onReplySubmit}
                 />
             </div>
         );
     }
 }
 
-VideoPopupCommentReplyActions.defaultProps = {};
+VideoPopupCommentReplyActions.defaultProps = {
+    onReplySubmit: () => {}
+};
 
-VideoPopupCommentReplyActions.propTypes = {};
+VideoPopupCommentReplyActions.propTypes = {
+    onReplySubmit: PropTypes.func.isRequired
+};
